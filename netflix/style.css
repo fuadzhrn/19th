@@ -5,14 +5,21 @@
 }
 html,body{
     overflow-x: hidden;
+    overflow-y: hidden;
      background-color: #1E1E1E ;
 }
-
-.container{
+.logo{
     position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    top: 30px;
+    left: 40px;
+}
+.container{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .header-judul{
@@ -25,8 +32,79 @@ html,body{
 .header-judul .deskripsi{
     font-size: 64px;
     font-weight: bolder;
+    margin-bottom: 60px;
 }
 
 .user{
     display: flex;
+    gap: 35px;
+     width: fit-content;
+    margin: auto;
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+.user .img-user a img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  cursor: pointer;
+}
+
+.user .img-user a img:hover {
+  transform: scale(1.1);                  /* Membesar 10% */
+  border: 3px solid #fff;                 /* Border putih */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); /* Glow putih */
+}
+.user .img-user p {
+  color: #999;
+  transition: color 0.3s ease;
+}
+
+.user .img-user:hover p {
+  color: #fff;   /* jadi putih saat hover */
+}
+
+
+.user .img-user .icon-user1 {
+    padding: 0px 10px;
+    border-radius: 2px;
+    background-color: #92C987;
+}
+
+.user .img-user .icon-user2{
+    padding: 0px 10px;
+    border-radius: 2px;
+    background-color: #ED4A4A;
+}
+.user .img-user .icon-user3{
+    padding: 0px 10px;
+    border-radius: 2px;
+    background-color: #141846;
+}
+.user .img-user .icon-user4{
+    padding: 0px 10px;
+    border-radius: 2px;
+    background-color: #ED4A4A;
+}
+.user .img-user .icon-user5{
+    padding: 0px 10px;
+    border-radius: 2px;
+    background-color: #574FD4;
+}
+
+.button-text{
+    margin-top: 80px;
+}
+.button-text a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-size: 16px;
+  border: 2px solid white;
+  padding: 10px 60px;
+  transition: all 0.3s ease;   /* transisi halus */
+}
+
+.button-text a:hover {
+  background-color: #fff;  /* jadi putih saat hover */
+  color: #000;             /* teks jadi hitam */
+  transform: scale(1.05);  /* sedikit membesar */
 }
