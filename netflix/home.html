@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Netflix</title>
+</head>
+<body>
+    <!-- Main Hero Section -->
+    <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-info">
+                <div class="netflix-series">
+                    <img src="asset/logo_N.png" alt="Netflix" class="netflix-logo">
+                    <span>SERIES</span>
+                </div>
+                <h1 class="hero-title">The Fire Mountain</h1>
+                <p class="hero-description">
+                    On the fiery slopes of Mount Bromo, ancient legends awaken as the earth trembles beneath. When myth and reality collide, survival becomes a battle against nature's untamed fury.
+                </p>
+                <div class="hero-buttons">
+                    <button class="play-btn">
+                        <span class="play-icon">▶</span>
+                        Play
+                    </button>
+                    <button class="info-btn">
+                        
+                        More Info
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hero Video Preview Area (invisible hover area di sisi kanan) -->
+        <div class="hero-video-trigger"></div>
+        
+        <!-- Hero Background Video -->
+        <video class="hero-background-video" loop preload="none">
+            <source src="asset/video1.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Trending Now Section - dipindahkan ke dalam hero -->
+        <div class="content-section">
+            <h2 class="section-title">Trending Now</h2>
+            <div class="movie-row">
+                <div class="movie-item" data-video="asset/video1.mp4">
+                    <img src="asset/poster1.png" alt="Movie 1" class="poster-img">
+                    <video class="preview-video" loop preload="none">
+                        <source src="asset/video1.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                </div>
+                <div class="movie-item" data-video="asset/video2.mp4">
+                    <img src="asset/poster2.png" alt="Movie 2" class="poster-img">
+                    <video class="preview-video" loop preload="none">
+                        <source src="asset/video2.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                </div>
+                <div class="movie-item" data-video="asset/video3.mp4">
+                    <img src="asset/poster3.png" alt="Movie 3" class="poster-img">
+                    <video class="preview-video" loop preload="none">
+                        <source src="asset/video3.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                </div>
+                <div class="movie-item" data-video="asset/video4.mp4">
+                    <img src="asset/poster4.png" alt="Movie 4" class="poster-img">
+                    <video class="preview-video" loop preload="none">
+                        <source src="asset/video4.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                </div>
+                <div class="movie-item" data-video="asset/video5.mp4">
+                    <img src="asset/poster5.png" alt="Movie 5" class="poster-img">
+                    <video class="preview-video" loop preload="none">
+                        <source src="asset/video5.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                </div>
+                <div class="movie-item" data-video="asset/video6.mp4">
+                    <img src="asset/poster6.png" alt="Movie 6" class="poster-img">
+                    <video class="preview-video" loop preload="none">
+                        <source src="asset/video6.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                </div>
+                <div class="movie-item" data-video="asset/video7.mp4">
+                    <img src="asset/poster7.png" alt="Movie 7" class="poster-img">
+                    <video class="preview-video" loop preload="none">
+                        <source src="asset/video7.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-fade"></div>
+    </div>
+
+    <!-- Navigation Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-item">
+            <img src="asset/icon1.png" alt="Icon 1" class="sidebar-icon">
+        </div>
+        <div class="sidebar-item">
+            <img src="asset/icon2.png" alt="Icon 2" class="sidebar-icon">
+        </div>
+        <div class="sidebar-item">
+            <img src="asset/icon3.png" alt="Icon 3" class="sidebar-icon">
+        </div>
+        <div class="sidebar-item">
+            <img src="asset/icon4.png" alt="Icon 4" class="sidebar-icon">
+        </div>
+        <div class="sidebar-item">
+            <img src="asset/icon5.png" alt="Icon 5" class="sidebar-icon">
+        </div>
+        <div class="sidebar-item">
+            <img src="asset/icon6.png" alt="Icon 6" class="sidebar-icon">
+        </div>
+    </div>
+
+    <!-- Load JavaScript -->
+    <script src="home_new.js"></script>
+
+</body>
+</html>

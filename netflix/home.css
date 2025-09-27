@@ -1,0 +1,494 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    background-color: #141414;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: white;
+    height: 100vh;
+    width: 100%; /* Kembalikan ke default width */
+    overflow-x: hidden; /* Mencegah scroll horizontal */
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    background-image: url('asset/poster_utama.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: visible; /* Pastikan content yang keluar masih terlihat */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%; /* Sedikit lebih lebar untuk efek diagonal */
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    clip-path: polygon(0 0, 85% 0, 60% 100%, 0 100%); /* Membuat bentuk miring/diagonal */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    padding: 0 60px 0 140px; /* Padding kiri ditambah karena sidebar */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+.hero-info {
+    flex: 1;
+    max-width: 600px;
+    position: absolute;
+    bottom: 2px; /* Sesuaikan jarak dari bawah */
+}
+
+.netflix-series {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.netflix-logo {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.netflix-series span:last-child {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.hero-title {
+    font-size: 52px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #e5e5e5;
+    margin-bottom: 30px;
+    max-width: 500px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.play-btn, .info-btn {
+    padding: 12px 32px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.play-btn {
+    background: #fff;
+    color: #000;
+}
+
+.play-btn:hover {
+    background: rgba(255,255,255,0.8);
+    transform: scale(1.05);
+}
+
+.info-btn {
+    background: rgba(109,109,110,0.7);
+    color: #fff;
+}
+
+.info-btn:hover {
+    background: rgba(109,109,110,0.9);
+    transform: scale(1.05);
+}
+
+.hero-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(transparent, #141414);
+    z-index: 1;
+}
+
+/* Hero Video Preview Area */
+.hero-video-trigger {
+    position: absolute;
+    top: 0;
+    right: 0; /* Area di sisi kanan */
+    width: 30%; /* 30% dari lebar hero section */
+    height: 100%;
+    z-index: 2; /* Di atas background tapi di bawah content */
+    cursor: pointer;
+    /* Invisible - tidak mengubah desain */
+    background: transparent;
+}
+
+/* Hero Background Video */
+.hero-background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.8s ease; /* Smooth fade transition */
+    z-index: 0; /* Di belakang semua elemen */
+}
+
+/* When video is playing */
+.hero-section.video-playing .hero-background-video {
+    opacity: 1;
+}
+
+/* Adjust hero section untuk video */
+.hero-section.video-playing {
+    background-image: none; /* Hide static background saat video play */
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0; /* Background dari atas */
+    bottom: 0; /* Background sampai bawah */
+    width: 80px;
+    background: rgba(0, 0, 0, 0.6); /* Background hitam transparan */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Icon di tengah vertikal */
+    gap: 30px;
+    z-index: 100;
+    backdrop-filter: blur(5px); /* Efek blur halus */
+    border-radius: 0 15px 0px 0; /* Border radius di sisi kanan saja */
+}
+
+.sidebar-item {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    position: relative; /* Untuk positioning garis merah */
+}
+
+.sidebar-item:hover {
+    background: rgba(255, 255, 255, 0.1); /* Efek hover halus */
+    transform: scale(1.1);
+}
+
+.sidebar-item::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Posisi garis di bawah icon */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; /* Default width 0 */
+    height: 2px;
+    background-color: #e50914; /* Warna merah Netflix */
+    transition: width 0.3s ease;
+}
+
+.sidebar-item:hover::after {
+    width: 30px; /* Lebar garis saat hover */
+}
+
+.sidebar-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* Membuat icon menjadi putih */
+    opacity: 0.8;
+}
+
+.sidebar-item:hover .sidebar-icon {
+    opacity: 1; /* Icon lebih terang saat hover */
+}
+
+/* Content Section */
+.content-section {
+    position: absolute;
+    bottom: 0px; /* Nilai negatif untuk menurunkan poster lebih jauh */
+    left: 100px; /* Offset untuk sidebar */
+    right: 60px;
+    z-index: 3;
+    background: none; /* Hapus background karena sudah dalam hero */
+    padding: 0; /* Reset padding */
+    margin: 0; /* Reset margin */
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    padding-top: 50px;
+    color: #fff;
+}
+
+.movie-row {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto; /* Enable horizontal scroll */
+    overflow-y: hidden; /* Hide vertical scroll */
+    scroll-behavior: smooth; /* Smooth scrolling */
+    scrollbar-width: none; /* Firefox - hide scrollbar */
+    -ms-overflow-style: none; /* IE/Edge - hide scrollbar */
+}
+
+/* Hide scrollbar for webkit browsers (Chrome, Safari) */
+.movie-row::-webkit-scrollbar {
+    display: none;
+}
+
+.movie-item {
+    flex: 0 0 auto;
+    width: 170px;
+    position: relative; /* For video overlay positioning */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    overflow: hidden; /* Hide overflow for smooth transitions */
+    border-radius: 6px; /* Apply border radius to container */
+}
+
+.movie-item:hover {
+    transform: scale(1.05);
+    z-index: 10; /* Bring hovered item to front */
+}
+
+/* Poster Image Styling */
+.movie-item .poster-img {
+    width: 100%;
+    height: 252px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    transition: opacity 0.5s ease; /* Smooth fade transition */
+    display: block;
+}
+
+/* Preview Video Styling */
+.movie-item .preview-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 252px;
+    object-fit: cover;
+    border-radius: 6px;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.5s ease; /* Smooth fade transition */
+    background: #000; /* Fallback background */
+}
+
+/* Play Overlay */
+.movie-item .play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom, 
+        rgba(0,0,0,0.1) 0%, 
+        rgba(0,0,0,0.3) 50%,
+        rgba(0,0,0,0.7) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 6px;
+}
+
+.movie-item .play-overlay .play-icon {
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 3px; /* Center the triangle */
+    transition: all 0.3s ease;
+}
+
+.movie-item:hover .play-overlay .play-icon {
+    background: #fff;
+    transform: scale(1.1);
+}
+
+/* Legacy support for old img selector */
+.movie-item img {
+    width: 100%;
+    height: 252px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+/* ==================== MOBILE RESPONSIVE DESIGN ==================== */
+
+/* Tablet Portrait - 768px and below */
+@media screen and (max-width: 768px) {
+    /* Sidebar - Hide on tablet */
+    .sidebar {
+        display: none;
+    }
+    
+    /* Hero Section Adjustments */
+    .hero-content {
+        padding: 0 30px; /* Remove sidebar offset */
+    }
+    
+    .hero-title {
+        font-size: 40px;
+    }
+    
+    .hero-description {
+        font-size: 16px;
+        max-width: 80%;
+    }
+    
+    /* Content Section */
+    .content-section {
+        left: 30px;
+        right: 30px;
+    }
+    
+    .movie-item {
+        width: 150px;
+    }
+}
+
+/* Mobile Portrait - 480px and below */
+@media screen and (max-width: 480px) {
+    /* Hero Section - Full screen diagonal overlay */
+    .hero-overlay {
+        width: 100%; /* Memenuhi seluruh layar */
+        clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%); /* Diagonal penuh layar */
+    }
+    
+    /* Hero Section */
+    .hero-content {
+        padding: 0 20px;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    
+    .hero-info {
+        max-width: 100%;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+    
+    .hero-description {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        max-width: 100%;
+    }
+    
+    .hero-buttons {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .play-btn, .info-btn {
+        padding: 8px 20px;
+        font-size: 14px;
+        min-width: 100px;
+    }
+    
+    /* Content Section */
+    .content-section {
+        left: 20px;
+        right: 20px;
+        bottom: 30px;
+    }
+    
+    .section-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+        padding-top: 20px;
+    }
+    
+    .movie-row {
+        gap: 10px;
+    }
+    
+    .movie-item {
+        width: 120px;
+    }
+    
+    .movie-item .preview-video,
+    .movie-item .poster-img,
+    .movie-item img {
+        height: 180px;
+    }
+    
+    /* Hide video trigger on mobile */
+    .hero-video-trigger {
+        display: none;
+    }
+}
+
+/* Small Mobile - 360px and below */
+@media screen and (max-width: 360px) {
+    .hero-title {
+        font-size: 24px;
+    }
+    
+    .hero-description {
+        font-size: 13px;
+    }
+    
+    .movie-item {
+        width: 110px;
+    }
+    
+    .movie-item .preview-video,
+    .movie-item .poster-img,
+    .movie-item img {
+        height: 160px;
+    }
+}
