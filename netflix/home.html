@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="home.css">
     <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+
     <title>Netflix</title>
 </head>
 <body>
@@ -17,15 +22,17 @@
                     <img src="asset/logo_N.png" alt="Netflix" class="netflix-logo">
                     <span>SERIES</span>
                 </div>
-                <h1 class="hero-title">The Fire Mountain</h1>
+                <h1 class="hero-title">
+                    <span class="beyond">Beyond </span>
+                    <span class="days">730 Days</span></h1>
                 <p class="hero-description">
-                    On the fiery slopes of Mount Bromo, ancient legends awaken as the earth trembles beneath. When myth and reality collide, survival becomes a battle against nature's untamed fury.
+                  From the first hello to endless tomorrows, 730 days have written our story. Yet what’s etched is not just time, but a journey filled with laughter, challenges, and dreams that keep growing. And beyond these two years, countless days still await to be lived together.
                 </p>
                 <div class="hero-buttons">
-                    <button class="play-btn">
+                    <a href="video-player.html" class="play-btn">
                         <span class="play-icon">▶</span>
                         Play
-                    </button>
+                    </a>
                     <button class="info-btn">
                         
                         More Info
@@ -51,9 +58,9 @@
                     <video class="preview-video" loop preload="none">
                         <source src="asset/video1.mp4" type="video/mp4">
                     </video>
-                    <div class="play-overlay">
+                    <a href="video-player.html" class="play-overlay">
                         <div class="play-icon">▶</div>
-                    </div>
+                    </a>
                 </div>
                 <div class="movie-item" data-video="asset/video2.mp4">
                     <img src="asset/poster2.png" alt="Movie 2" class="poster-img">
@@ -78,9 +85,9 @@
                     <video class="preview-video" loop preload="none">
                         <source src="asset/video4.mp4" type="video/mp4">
                     </video>
-                    <div class="play-overlay">
+                    <a href="video-player.html" class="play-overlay poster-utama">
                         <div class="play-icon">▶</div>
-                    </div>
+                    </a>
                 </div>
                 <div class="movie-item" data-video="asset/video5.mp4">
                     <img src="asset/poster5.png" alt="Movie 5" class="poster-img">

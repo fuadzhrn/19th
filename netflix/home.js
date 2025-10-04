@@ -85,8 +85,7 @@ function initDesktopVersion() {
     initHeroVideoPreview();
     initPosterVideoPreview();
     initOptimizations();
-}
-    });
+};
     
     // Handle orientation change
     window.addEventListener('orientationchange', () => {
@@ -121,7 +120,7 @@ function initDesktopVersion() {
             isDown = false;
         });
     });
-}
+
 
 // Function untuk stop semua video dan set volume
 function stopAllVideos() {

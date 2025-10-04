@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix - Video Player</title>
+    <link rel="stylesheet" href="video-player.css">
+</head>
+<body>
+    <div class="video-player-container">
+        <!-- Video Element -->
+        <video id="mainVideo" class="main-video" controls autoplay>
+            <source src="asset/video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Custom Controls Overlay -->
+        <div class="video-controls" id="videoControls">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <button class="back-btn" onclick="goBack()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M19 12H5M12 19L5 12L12 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="video-title">
+                    <h2>Movie Title</h2>
+                    <p>Season 1 • Episode 1</p>
+                </div>
+            </div>
+            
+            <!-- Center Play/Pause Button -->
+            <div class="center-controls">
+                <button class="play-pause-btn" id="playPauseBtn" onclick="togglePlayPause()">
+                    <svg id="playIcon" width="60" height="60" viewBox="0 0 24 24" fill="white">
+                        <path d="M8 5V19L19 12L8 5Z"/>
+                    </svg>
+                    <svg id="pauseIcon" width="60" height="60" viewBox="0 0 24 24" fill="white" style="display: none;">
+                        <path d="M6 4H10V20H6V4ZM14 4H18V20H14V4Z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Bottom Controls -->
+            <div class="bottom-controls">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-filled" id="progressFilled"></div>
+                        <div class="progress-handle" id="progressHandle"></div>
+                    </div>
+                    <div class="time-display">
+                        <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+                    </div>
+                </div>
+                
+                <div class="control-buttons">
+                    <button class="control-btn" onclick="skipBackward()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <path d="M11 18V6L3 12L11 18ZM13 6V18L21 12L13 6Z"/>
+                        </svg>
+                        <span>10s</span>
+                    </button>
+                    
+                    <button class="control-btn" onclick="togglePlayPause()">
+                        <svg id="bottomPlayIcon" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <path d="M8 5V19L19 12L8 5Z"/>
+                        </svg>
+                        <svg id="bottomPauseIcon" width="24" height="24" viewBox="0 0 24 24" fill="white" style="display: none;">
+                            <path d="M6 4H10V20H6V4ZM14 4H18V20H14V4Z"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="control-btn" onclick="skipForward()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <path d="M13 6V18L21 12L13 6ZM3 6V18L11 12L3 6Z"/>
+                        </svg>
+                        <span>10s</span>
+                    </button>
+                    
+                    <button class="control-btn" onclick="toggleMute()">
+                        <svg id="volumeIcon" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <path d="M11 5L6 9H2V15H6L11 19V5ZM19.07 4.93L17.66 6.34C18.78 7.46 19.5 9.05 19.5 10.8S18.78 14.14 17.66 15.26L19.07 16.67C20.89 14.85 22 12.18 22 9.3S20.89 3.75 19.07 1.93L19.07 4.93ZM15.54 8.46L14.12 9.88C14.66 10.42 15 11.18 15 12S14.66 13.58 14.12 14.12L15.54 15.54C16.57 14.51 17.25 13.12 17.25 11.6S16.57 8.69 15.54 7.66L15.54 8.46Z"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="control-btn" onclick="toggleFullscreen()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <path d="M7 14H5V19H10V17H7V14ZM5 10H7V7H10V5H5V10ZM17 17H14V19H19V14H17V17ZM14 5V7H17V10H19V5H14Z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Loading Spinner -->
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner"></div>
+        </div>
+    </div>
+    
+    <script src="video-player.js"></script>
+</body>
+</html>
